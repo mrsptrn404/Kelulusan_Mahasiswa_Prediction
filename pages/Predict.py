@@ -1,33 +1,49 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 
 def run():
-    st.subheader("📥 Prediksi Kelulusan Mahasiswa")
-
-    # Input
-    ipk = st.number_input("IPK", min_value=0.0, max_value=4.0, step=0.01)
-    pelatihan = st.slider("Pelatihan Pengetahuan", 0, 10)
-    prestasi = st.slider("Prestasi", 0, 50)
-    organisasi = st.slider("Kegiatan Organisasi", 0, 10)
+    st.subheader("📊 Prediksi Kelulusan")
 
     df = pd.read_csv("lulus.csv")
-    df.columns = df.columns.str.strip()
+    df.columns = df.columns.str.strip().str.lower()
 
-    X = df[['IPK', 'Pelatihan Pengetahuan', 'Prestasi', 'Kegiatan Organisasi']]
-    y = df['Lulus Cepat']
+    st.write("Kolom tersedia di data:")
+    st.write(df.columns.tolist())
 
-    # Naive Bayes & KNN
-    nb = GaussianNB().fit(X, y)
-    knn = KNeighborsClassifier(n_neighbors=3).fit(X, y)
+    # Daftar fitur yang diharapkan
+    fitur_input = ['ipk', 'pelatihan pengetahuan', 'prestasi', 'kegiatan organisasi']
+    fitur_ada = [col for col in fitur_input if col in df.columns]
 
-    input_data = pd.DataFrame([[ipk, pelatihan, prestasi, organisasi]],
-                              columns=X.columns)
+    if 'lulus cepat' not in df.columns:
+        st.error("Kolom target 'lulus cepat' tidak ditemukan!")
+        return
 
-    pred_nb = nb.predict(input_data)[0]
-    pred_knn = knn.predict(input_data)[0]
+    if not fitur_ada:
+        st.error("Tidak ada fitur yang ditemukan dari: " + ", ".join(fitur_input))
+        return
 
-    st.write("### Hasil Prediksi")
-    st.info(f"Naive Bayes: **{pred_nb}**")
-    st.info(f"KNN: **{pred_knn}**")
+    X = df[fitur_ada]
+    y = df['lulus cepat']
+
+    # Pelatihan dua model
+    model_nb = GaussianNB()
+    model_nb.fit(X, y)
+
+    model_knn = KNeighborsClassifier(n_neighbors=3)
+    model_knn.fit(X, y)
+
+    st.write("### Masukkan Data Mahasiswa Baru")
+    input_data = {}
+    for col in fitur_ada:
+        input_data[col] = st.number_input(f"Masukkan nilai {col.title()}", min_value=0.0, step=0.1)
+
+    if st.button("Prediksi"):
+        input_df = pd.DataFrame([input_data])
+        pred_nb = model_nb.predict(input_df)[0]
+        pred_knn = model_knn.predict(input_df)[0]
+
+        st.success(f"Naive Bayes Prediksi: {'Lulus Cepat' if pred_nb == 1 else 'Tidak Lulus Cepat'}")
+        st.success(f"KNN (k=3) Prediksi: {'Lulus Cepat' if pred_knn == 1 else 'Tidak Lulus Cepat'}")
