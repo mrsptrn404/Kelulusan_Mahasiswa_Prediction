@@ -1,4 +1,5 @@
 import streamlit as st
+from pages import Modeling, EDA, Predict
 
 # Sidebar navigasi
 st.sidebar.title("📊 Menu")
