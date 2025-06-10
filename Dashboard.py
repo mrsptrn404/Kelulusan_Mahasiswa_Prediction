@@ -26,13 +26,5 @@ Dashboard ini terdiri dari tiga bagian utama:
 2. Modeling: Proses membangun dan melatih model machine learning berdasarkan data yang telah dianalisis sebelumnya, dengan tujuan untuk mempelajari pola dan hubungan antar variabel sehingga dapat digunakan untuk melakukan prediksi. Dalam konteks prediksi kelulusan mahasiswa, tahap modeling digunakan untuk melatih algoritma seperti Naive Bayes dan K-Nearest Neighbors (KNN) agar dapat memprediksi apakah seorang mahasiswa akan lulus tepat waktu berdasarkan data seperti IPK, jumlah pelatihan, prestasi, keaktifan dalam forum komunikasi selama kuliah, dan keterlibatan organisasi. Hasil dari modeling ini berupa model terlatih yang kemudian dapat digunakan untuk menguji akurasi dan melakukan prediksi pada data baru.
 3. Prediction: Tahap penggunaan model yang telah dilatih sebelumnya untuk memprediksi atau memperkirakan hasil dari data baru yang belum diketahui hasilnya. Dalam konteks aplikasi ini, prediction digunakan untuk memproyeksikan apakah seorang mahasiswa akan lulus cepat atau tidak berdasarkan data yang dimasukkan, seperti IPK, jumlah pelatihan, prestasi, keterlibatan dalam forum komunikasi, dan kegiatan organisasi. Tujuan dari tahap ini adalah memberikan gambaran atau rekomendasi berbasis data yang dapat membantu mahasiswa, dosen, atau pihak kampus dalam mengambil keputusan atau memberikan dukungan akademik secara lebih tepat sasaran.
 
-Gunakan sidebar untuk memilih halaman.
-""")
-
-# Load halaman berdasarkan pilihan
-if page == "EDA":
-    EDA.run()
-elif page == "Modeling":
-    Modeling.run()
-elif page == "Predict":
-    Predict.run()
+📌 **Silakan pilih halaman yang ingin Anda tuju melalui navigasi sidebar di sebelah kiri.**  
+➡️ **Gunakan menu navigasi di kiri layar untuk menjelajahi fitur-fitur dashboard.**
