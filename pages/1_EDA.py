@@ -3,24 +3,41 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# Judul dan penjelasan
 st.subheader("📊 Eksplorasi Data (EDA)")
 
-df = pd.read_csv("lulus.csv")
-df.columns = df.columns.str.strip()
+st.markdown("""
+Exploratory Data Analysis (EDA) adalah tahap awal dalam proses analisis data yang bertujuan untuk memahami struktur, karakteristik, dan pola dalam dataset sebelum dilakukan pemodelan.  
+Pada halaman ini, Anda dapat melihat:
+- Contoh data awal
+- Statistik deskriptif
+- Distribusi variabel target (`Lulus Cepat`)
+- Korelasi antar fitur numerik
 
-st.write("**Data Sample:**")
+Dengan EDA, kita dapat menemukan pola penting, mendeteksi data tidak wajar, dan menentukan fitur-fitur yang paling berpengaruh terhadap kelulusan cepat mahasiswa.
+""")
+
+# Load data
+df = pd.read_csv("lulus.csv")
+df.columns = df.columns.str.strip()  # Bersihkan nama kolom dari spasi
+
+# Tampilkan sample data
+st.write("### 🔍 Contoh Data")
 st.dataframe(df.head())
 
-st.write("**Statistik Deskriptif:**")
+# Statistik deskriptif
+st.write("### 📈 Statistik Deskriptif")
 st.dataframe(df.describe())
 
+# Distribusi target
 if 'Lulus Cepat' in df.columns:
-    st.write("**Distribusi Kolom Target 'Lulus Cepat':**")
+    st.write("### 📊 Distribusi Target: Lulus Cepat")
     st.bar_chart(df['Lulus Cepat'].value_counts())
 else:
-    st.warning("Kolom 'Lulus Cepat' tidak ditemukan!")
+    st.warning("Kolom 'Lulus Cepat' tidak ditemukan dalam data!")
 
-st.write("**Korelasi antar variabel numerik:**")
+# Korelasi
+st.write("### 🔗 Korelasi Antar Variabel Numerik")
 corr = df.corr(numeric_only=True)
 fig, ax = plt.subplots()
 sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
