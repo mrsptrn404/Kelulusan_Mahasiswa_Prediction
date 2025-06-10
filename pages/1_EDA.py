@@ -9,7 +9,7 @@ st.subheader("📊 Exploratory Data Analysis (EDA)")
 st.markdown("""
 Exploratory Data Analysis (EDA) adalah tahap awal dalam proses analisis data yang bertujuan untuk memahami struktur, karakteristik, dan pola dalam dataset sebelum dilakukan pemodelan.  
 Pada halaman ini, Anda dapat melihat:
-- Contoh data awal
+- Seluruh data mentah
 - Statistik deskriptif
 - Distribusi variabel target (`Lulus Cepat`)
 - Korelasi antar fitur numerik
@@ -21,9 +21,9 @@ Dengan EDA, kita dapat menemukan pola penting, mendeteksi data tidak wajar, dan 
 df = pd.read_csv("lulus.csv")
 df.columns = df.columns.str.strip()  # Bersihkan nama kolom dari spasi
 
-# Tampilkan sample data
-st.write("### 🔍 Contoh Data")
-st.dataframe(df.head())
+# Tampilkan seluruh data
+st.write("### 🔍 Seluruh Data")
+st.dataframe(df)  # <-- menampilkan semua data, bukan hanya df.head()
 
 # Statistik deskriptif
 st.write("### 📈 Statistik Deskriptif")
@@ -36,9 +36,9 @@ if 'Lulus Cepat' in df.columns:
 else:
     st.warning("Kolom 'Lulus Cepat' tidak ditemukan dalam data!")
 
-# Korelasi
+# Korelasi antar variabel numerik
 st.write("### 🔗 Korelasi Antar Variabel Numerik")
 corr = df.corr(numeric_only=True)
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10, 6))  # Lebih besar agar lebih jelas
 sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
 st.pyplot(fig)
