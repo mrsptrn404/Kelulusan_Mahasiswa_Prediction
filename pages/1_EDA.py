@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Judul dan penjelasan
-st.subheader("📊 Eksplorasi Data (EDA)")
+st.subheader("📊 Exploratory Data Analysis (EDA)")
 
 st.markdown("""
 Exploratory Data Analysis (EDA) adalah tahap awal dalam proses analisis data yang bertujuan untuk memahami struktur, karakteristik, dan pola dalam dataset sebelum dilakukan pemodelan.  
