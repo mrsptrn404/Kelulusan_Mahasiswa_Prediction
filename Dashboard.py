@@ -29,10 +29,3 @@ Dashboard ini terdiri dari tiga bagian utama:
 📌 **Silakan pilih halaman yang ingin Anda tuju melalui navigasi sidebar di sebelah kiri.**  
 ➡️ **Gunakan menu navigasi di kiri layar untuk menjelajahi fitur-fitur dashboard.**
 """)
-# Navigasi halaman
-if page == "EDA":
-    EDA.run()
-elif page == "Modeling":
-    Modeling.run()
-elif page == "Predict":
-    Predict.run()
