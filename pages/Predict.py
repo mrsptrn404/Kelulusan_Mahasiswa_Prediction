@@ -11,7 +11,7 @@ def run():
     df.columns = df.columns.str.strip().str.lower()
 
     # Pastikan kolom yang dibutuhkan tersedia
-    fitur = ['ipk', 'pelatihan pengembangan diri', 'prestasi', 'komunikasi', 'kegiatan organisasi']
+    fitur = ['ipk', 'pelatihan pengembangan diri', 'prestasi', 'forum komunikasi kuliah', 'kegiatan organisasi']
     target = 'lulus cepat'
 
     fitur_ada = [col for col in fitur if col in df.columns]
@@ -47,7 +47,7 @@ def run():
             'ipk': ipk,
             'pelatihan pengembangan diri': pelatihan,
             'prestasi': prestasi,
-            'komunikasi': komunikasi,
+            'forum komunikasi kuliah': komunikasi,
             'kegiatan organisasi': organisasi
         }])
 
