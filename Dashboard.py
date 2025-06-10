@@ -3,10 +3,6 @@ from pages import EDA, Modeling, Predict
 
 st.set_page_config(page_title="Prediksi Kelulusan", layout="wide")
 
-# Sidebar
-st.sidebar.title("📊 Menu Navigasi")
-page = st.sidebar.radio("Pilih Halaman:", ["EDA", "Modeling", "Predict"])
-
 # Halaman utama
 st.title("🎓 Dashboard Prediksi Kelulusan Mahasiswa")
 st.markdown("""
