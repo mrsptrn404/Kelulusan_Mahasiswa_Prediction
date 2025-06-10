@@ -8,13 +8,18 @@ from sklearn.metrics import accuracy_score
 def run():
     st.subheader("🤖 Pelatihan Model")
 
+    # Membaca data
     df = pd.read_csv("lulus.csv")
-    df.columns = df.columns.str.strip()
+    df.columns = df.columns.str.strip()  # Menghilangkan spasi tak terlihat
 
-    X = df[['IPK', 'Pelatihan Pengetahuan', 'Prestasi', 'Kegiatan Organisasi']]
+    # Tampilkan kolom untuk debug (opsional)
+    st.write("Kolom tersedia dalam data:", df.columns.tolist())
+
+    # Memilih fitur dan target
+    X = df[['IPK', 'Pelatihan Pengembangan Diri', 'Prestasi', 'Kegiatan Organisasi']]
     y = df['Lulus Cepat']
 
-    # Split
+    # Split data
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Naive Bayes
@@ -27,6 +32,7 @@ def run():
     knn.fit(X_train, y_train)
     acc_knn = accuracy_score(y_test, knn.predict(X_test))
 
+    # Tampilkan hasil
     st.write("### Akurasi Model")
     st.success(f"Naive Bayes: {acc_nb:.2f}")
     st.success(f"KNN (k=3): {acc_knn:.2f}")
