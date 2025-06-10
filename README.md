@@ -1,43 +1,41 @@
-# 🎓 Prediksi Kelulusan Mahasiswa - Dashboard Streamlit
+# 🎓 Dashboard Prediksi Kelulusan Mahasiswa
 
-Aplikasi **interaktif berbasis Streamlit** untuk memprediksi apakah seorang mahasiswa akan **lulus cepat atau tidak**, menggunakan model **Naive Bayes** dan **K-Nearest Neighbors (KNN)** berdasarkan data akademik dan aktivitas mahasiswa.
+Proyek ini bertujuan untuk memprediksi **kelulusan cepat atau tidaknya mahasiswa** berdasarkan beberapa indikator penting. Aplikasi dibangun menggunakan **Python**, **Streamlit**, dan teknik machine learning sederhana seperti **Naive Bayes** dan **KNN**.
 
----
+## 📊 Fitur Aplikasi
 
-## 🚀 Fitur Aplikasi
+Aplikasi Streamlit ini terdiri dari tiga halaman utama:
 
-🔍 **EDA (Exploratory Data Analysis)**  
-Visualisasi dan eksplorasi dataset, termasuk statistik deskriptif dan heatmap korelasi.
+1. **EDA (Exploratory Data Analysis)**  
+   Menampilkan analisis deskriptif dan visualisasi awal dari dataset.
 
-🧠 **Modeling (Pelatihan Model)**  
-Melatih dua algoritma machine learning:  
-- **Naive Bayes**
-- **K-Nearest Neighbors (KNN)**  
-Ditampilkan pula akurasi masing-masing model.
+2. **Modeling**  
+   Menyediakan dua algoritma pembelajaran mesin (Naive Bayes dan K-Nearest Neighbors) untuk pelatihan dan evaluasi model.
 
-📊 **Prediksi**  
-Formulir input interaktif untuk memasukkan data mahasiswa dan mendapatkan hasil prediksi secara langsung.
-
----
+3. **Predict**  
+   Halaman interaktif untuk memprediksi apakah seorang mahasiswa akan lulus cepat atau tidak berdasarkan input pengguna.
 
 ## 📁 Dataset
 
-Dataset digunakan dari [Kaggle - Dataset Kelulusan Mahasiswa](https://www.kaggle.com/datasets/christopherbayuaji/dataset-kelulusan):
+Dataset yang digunakan berasal dari [Kaggle](https://www.kaggle.com/) dan berisi beberapa fitur penting:
 
-### 📌 Fitur:
-- `IPK`: Nilai IPK (skala 0.0 - 4.0)
-- `Pelatihan Pengetahuan`: Jumlah pelatihan yang diikuti (0-10)
-- `Prestasi`: Jumlah prestasi akademik/non-akademik (0-50)
-- `Kegiatan Organisasi`: Jumlah kegiatan organisasi (0-10)
+| Fitur                         | Deskripsi                                                      |
+|------------------------------|-----------------------------------------------------------------|
+| `IPK`                        | Indeks Prestasi Kumulatif mahasiswa                             |
+| `Pelatihan Pengembangan Diri`| Jumlah pelatihan yang diikuti terkait pengembangan pribadi      |
+| `Prestasi`                   | Jumlah prestasi atau penghargaan yang diperoleh                 |
+| `Forum Komunikasi Kuliah`    | Keterlibatan mahasiswa dalam forum komunikasi selama kuliah     |
+| `Kegiatan Organisasi`        | Jumlah kegiatan organisasi yang diikuti                         |
+| `Lulus Cepat`                | Target variabel: 1 (lulus cepat), 0 (tidak lulus cepat)         |
 
-🎯 **Target:**  
-- `Lulus Cepat`: `Yes` atau `No`
+## ⚙️ Teknologi yang Digunakan
 
----
+- Python 3.13
+- Pandas
+- Scikit-learn
+- Streamlit
 
-## 🛠️ Instalasi dan Menjalankan
+## 🚀 Cara Menjalankan Aplikasi
 
-1. **Clone repo** atau upload file ke direktori lokal:
 ```bash
-git clone https://github.com/mrsptrn404/Kelulusan_Mahasiswa_Prediction.git
-cd Kelulusan_Mahasiswa_Prediction
+streamlit run Dashboard.py
